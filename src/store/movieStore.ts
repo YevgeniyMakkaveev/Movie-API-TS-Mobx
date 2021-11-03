@@ -1,5 +1,5 @@
 import axios from "axios";
-import { makeAutoObservable, toJS } from "mobx";
+import { makeAutoObservable} from "mobx";
 import { _key, _api, _search } from "../_const";
 
 import IMovieCard from "../types/movieCard";
@@ -31,21 +31,18 @@ class DocumentVersionStore {
     console.log(movies);
     this.isLoading = false;
     this.moviesPopular = [...this.moviesPopular, ...movies];
-    console.log(toJS(this.moviesPopular));
   }
 
   setSingleMovie(movie: IMovieCard | undefined) {
     if (!movie) return;
     this.isLoading = false;
     this.singleMovie = movie;
-    console.log(toJS(this.singleMovie));
   }
   setSearch(movies: IMoviePreview[] | undefined) {
     if (!movies) return;
     console.log(movies);
     this.isLoading = false;
     this.moviesSearch = [...this.moviesSearch, ...movies];
-    console.log(toJS(this.moviesSearch));
   }
 
   resetSearchPages() {
@@ -58,7 +55,6 @@ class DocumentVersionStore {
   }
   getMoreSearch() {
     this.pageSearch++;
-    console.log(toJS(this.pageSearch))
     this.fetchSearch(this.search, `${this.pageSearch}`);
   }
 

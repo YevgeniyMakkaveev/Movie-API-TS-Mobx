@@ -16,10 +16,10 @@ console.log('загрузка')
   <div><h2 className='movie-title'>{title}</h2></div>
   <div className='tagline'>{tagline} </div>
   <div className='date'>Release date: {release_date}</div>
-  <div> <ul className='genres'>
-   {genres&&genres.map(genre=><li>{genre.name} </li>)}
-   </ul> </div>
-  <div className={getColor(+vote_average)} >{vote_average}</div>
+  <div className='genres'>
+  Genres:  {genres&&genres.map(genre=><span>{genre.name} </span>)}
+    </div>
+  <div className={getColor(+vote_average)} > Score {vote_average}</div>
  </div>
 </div>
 <div className='body'>

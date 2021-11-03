@@ -1,10 +1,20 @@
+@import '../../../style/color.scss';
+
 .card-nest {
  margin-top: 2em;
  display: flex;
  flex-direction: row;
  flex-wrap: wrap;
-
  .card-nest>div {
   margin: 0 3em;
  }
 }
+ .more-btn {
+  width: 250px;
+  height: 50px;
+  border-radius: 0.5em;
+  font-size: 1.4em;
+  font-weight: 700;
+  background-color: $button-inactive;
+  color: $white-text;
+ }

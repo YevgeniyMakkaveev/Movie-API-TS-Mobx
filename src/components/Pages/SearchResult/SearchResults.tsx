@@ -11,7 +11,7 @@ const {moviesSearch, getMoreSearch }=movieStore
 <div className="card-nest">
 {moviesSearch&&moviesSearch.map((movie)=> <MoviePreview key={movie.id} {...movie} /> )}
 </div>
- <button onClick={()=>getMoreSearch()}>ЕЩЕ!</button>
+ {moviesSearch.length>1&&<button className='more-btn' onClick={()=>getMoreSearch()}>More</button>}
  </div>
 })
 export default SearchRes

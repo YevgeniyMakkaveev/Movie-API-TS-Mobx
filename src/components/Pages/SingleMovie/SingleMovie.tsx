@@ -10,11 +10,10 @@ const SingleMovie:React.FC = observer(() => {
 const {singleMovie,fetchSingleMovie}=movieStore
     useEffect(() => {
     fetchSingleMovie(id);
-  }, []);
+  }, [fetchSingleMovie,id]);
   
   return (
     <div>
-      Фильм {id}
       {singleMovie&&<MovieCard key={singleMovie.id} {...singleMovie} />}
     </div>
   );

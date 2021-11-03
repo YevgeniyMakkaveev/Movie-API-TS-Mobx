@@ -3,6 +3,8 @@ import React, {useState} from "react";
 import { useHistory } from 'react-router-dom';
 
 import movieStore from "../../store/movieStore";
+import NavButtons from "./NavButtons";
+import './Header.scss'
 
 const Header:React.FC=observer(()=>{
  const {fetchSearch}=movieStore
@@ -17,11 +19,12 @@ history.push(`/search`);
 setSearch('')
  }
 
- return <div> <form onSubmit={(e)=>onSearch(e)}> 
-<input type="search" onChange={(e)=>setSearch(e.target.value)} value={search}/>
-<button type="submit" >Поиск</button>
+ return <div>
+     <header> <h1 className='title'>MOVIE-API</h1> </header>
+    <form onSubmit={(e)=>onSearch(e)}> 
+<input className='search' type="search" onChange={(e)=>setSearch(e.target.value)} value={search}/>
 </form>
-
+<NavButtons/>
  </div>
 })
 export default Header
