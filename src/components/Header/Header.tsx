@@ -9,7 +9,7 @@ import './Header.scss'
 const Header:React.FC=observer(()=>{
  const {fetchSearch}=movieStore
  const [search, setSearch]=useState('');
- const history = useHistory();
+ const history = useHistory(); 
 
  const onSearch =(e:React.FormEvent<HTMLFormElement>)=>{
   if(!search) return
@@ -22,7 +22,7 @@ setSearch('')
  return <div>
      <header> <h1 className='title'>MOVIE-API</h1> </header>
     <form onSubmit={(e)=>onSearch(e)}> 
-<input className='search' type="search" onChange={(e)=>setSearch(e.target.value)} value={search}/>
+<input placeholder='Start search and press enter' className='search' type="search" onChange={(e)=>setSearch(e.target.value)} value={search}/>
 </form>
 <NavButtons/>
  </div>

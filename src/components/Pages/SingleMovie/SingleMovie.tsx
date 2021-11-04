@@ -5,16 +5,16 @@ import { useParams } from "react-router-dom";
 import movieStore from "../../../store/movieStore";
 import MovieCard from "../../MovieCard";
 
-const SingleMovie:React.FC = observer(() => {
+const SingleMovie: React.FC = observer(() => {
   const { id } = useParams<{ id: string }>();
-const {singleMovie,fetchSingleMovie}=movieStore
-    useEffect(() => {
+  const { singleMovie, fetchSingleMovie } = movieStore;
+  useEffect(() => {
     fetchSingleMovie(id);
-  }, [fetchSingleMovie,id]);
-  
+  }, [fetchSingleMovie, id]);
+
   return (
     <div>
-      {singleMovie&&<MovieCard key={singleMovie.id} {...singleMovie} />}
+      {singleMovie && <MovieCard key={singleMovie.id} {...singleMovie} />}
     </div>
   );
 });

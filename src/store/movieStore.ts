@@ -1,5 +1,5 @@
 import axios from "axios";
-import { makeAutoObservable} from "mobx";
+import { makeAutoObservable } from "mobx";
 import { _key, _api, _search } from "../_const";
 
 import IMovieCard from "../types/movieCard";
