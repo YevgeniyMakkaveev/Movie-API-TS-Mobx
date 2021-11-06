@@ -9,14 +9,16 @@ import SingleMovie from "../Pages/SingleMovie";
 import SearchRes from "../Pages/SearchResult";
 import Favorite from "../Pages/Favorite";
 import NotFound from "../Pages/404/NotFound";
+import Loader from "../Loader";
 import "./App.scss";
 
 const App: React.FC = observer(() => {
-  const { getFavorite } = movieStore;
+  const { getFavorite,isLoading } = movieStore;
   getFavorite();
   return (
     <div className="App">
       <Header />
+      {isLoading&& <div className='spinner'> <Loader/> </div>}
       <Switch>
         <Route exact path="/" component={Popular} />
         <Route exact path="/search" component={SearchRes} />

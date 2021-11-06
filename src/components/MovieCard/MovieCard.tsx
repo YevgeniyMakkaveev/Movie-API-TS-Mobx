@@ -5,9 +5,9 @@ import getColor from "../../unit/getColor";
 import { _imgPatch } from "../../_const";
 import "./MovieCard.scss";
 
-interface IRenderMovieCard extends IMovieCard{
-toggleFavorite: (favorite:boolean) => void;
-isFavorite: boolean
+interface IRenderMovieCard extends IMovieCard {
+  toggleFavorite: (favorite: boolean) => void;
+  isFavorite: boolean;
 }
 
 const MovieCard: React.FC<IRenderMovieCard> = ({
@@ -20,10 +20,8 @@ const MovieCard: React.FC<IRenderMovieCard> = ({
   tagline,
   genres,
   isFavorite,
-  toggleFavorite
+  toggleFavorite,
 }) => {
-  console.log("загрузка");
-
   return (
     <div className="wrapper">
       <div className="preview">
@@ -36,13 +34,16 @@ const MovieCard: React.FC<IRenderMovieCard> = ({
             <div className="tagline">{tagline} </div>
             <div className="date">Release date: {release_date}</div>
             <div className="genres">
-              Genres: {genres && genres.map((genre) => <span>{genre.name} </span>)}
+              Genres:
+              {genres && genres.map((genre) => <span>{genre.name} </span>)}
             </div>
             <div className={getColor(+vote_average)}> Score {vote_average}</div>
           </div>
         </div>
         <div className="body">{overview}</div>
-      <button className='btn-fav' onClick={()=>toggleFavorite(!isFavorite)}>{isFavorite? 'Удалить':'Добавить'} </button>
+        <button className="btn-fav" onClick={() => toggleFavorite(!isFavorite)}>
+          {isFavorite ? "Remove from ☆" : "Add to ☆ "}
+        </button>
       </div>
     </div>
   );

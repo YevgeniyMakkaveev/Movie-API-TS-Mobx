@@ -5,7 +5,7 @@
   padding-top: 2em;
 
   .preview {
-    width: 1200px;
+    width: 80%;
     margin: 4em auto;
     background-color: $primary-color;
     border-radius: 4px;
@@ -18,27 +18,31 @@
 
       img {
         margin-top: 1em;
-        height: 700px;
         width: auto;
+        height: 200px;
       }
+
       .movie-title {
-        font-size: 3em;
+        font-size: 2em;
         color: $secondary-color;
         font-weight: 700;
       }
+
       .tagline {
-        font-size: 2em;
+        font-size: 1.5em;
         color: $secondary-color;
         font-weight: 400;
         margin-bottom: 1em;
       }
+
       .main-info {
         display: flex;
         width: 100%;
         flex-direction: column;
-        margin-top: 2em;
+        margin-top: 1.3em;
         align-items: center;
       }
+
       .date,
       .genres {
         font-size: 1.2em;
@@ -46,35 +50,86 @@
         margin-bottom: 1em;
       }
     }
+
     .body {
       color: #f4f5ff;
-      padding: 2rem;
+      padding: 1rem;
       display: flex;
       justify-content: center;
       align-items: center;
     }
   }
 }
+
 .green,
 .orange,
 .red {
-  font-size: 2em;
+  font-size: 1em;
 }
+
 .green {
   color: lightgreen;
 }
+
 .orange {
   color: darkgoldenrod;
 }
+
 .red {
   color: darkred;
 }
+
 .btn-fav {
-  width: 250px;
+  width: 33%;
   height: 50px;
   border-radius: 0.5em;
   font-size: 1em;
   font-weight: 700;
   background-color: $button-inactive;
   color: $white-text;
+  margin-bottom: 1em;
+}
+
+@media screen and (min-width: 767px) {
+  .preview {
+    .head {
+      img {
+        height: 500px !important;
+        width: auto !important;
+      }
+
+      .movie-title {
+        font-size: 3em !important;
+      }
+
+      .tagline,
+      .body,
+      .green,
+      .orange,
+      .red {
+        font-size: 2em !important;
+      }
+    }
+  }
+
+  .btn-fav {
+    width: 200px !important;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .preview {
+    width: 1100px !important;
+
+    .head {
+      img {
+        height: 700px !important;
+        width: auto !important;
+      }
+    }
+  }
+
+  .btn-fav {
+    width: 250px !important;
+  }
 }

@@ -1,8 +1,8 @@
 @import '../../../style/color.scss';
 
-.btns{
- button{
-  width: 250px;
+.btns {
+ button {
+  width: 33%;
   height: 50px;
   border-radius: 0.5em;
   font-size: 1.4em;
@@ -10,8 +10,25 @@
   background-color: $button-inactive;
   color: $white-text;
  }
- .active{
+
+ .active {
   background-color: $secondary-color;
   color: $primary-color;
+ }
+}
+
+@media screen and (min-width: 767px) {
+ .btns {
+  button {
+   width: 200px !important;
+  }
+ }
+}
+
+@media screen and (min-width: 1000px) {
+ .btns {
+  button {
+   width: 250px !important;
+  }
  }
 }

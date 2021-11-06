@@ -41,15 +41,15 @@ class DocumentVersionStore {
   setSingleMovie(movie: IMovieCard | undefined) {
     if (!movie) return;
     this.isLoading = false;
-    movie.isFavorite=this.isInFavorite(movie.id)
+    movie.isFavorite = this.isInFavorite(movie.id);
     this.singleMovie = movie;
   }
 
-singleMovieFavoriteToggle(status: boolean){
-  if(!this.singleMovie) return
-this.singleMovie.isFavorite=status
-this.toggleAllFavorite(this.singleMovie.id,status)
-}
+  singleMovieFavoriteToggle(status: boolean) {
+    if (!this.singleMovie) return;
+    this.singleMovie.isFavorite = status;
+    this.toggleAllFavorite(this.singleMovie.id, status);
+  }
 
   setSearch(movies: IMoviePreview[] | undefined) {
     if (!movies) return;
@@ -76,7 +76,6 @@ this.toggleAllFavorite(this.singleMovie.id,status)
       const res = favorite.filter((el) => el.id !== movie.id);
       this.favorite = res;
     }
-    console.log(JSON.stringify(this.favorite))
     localStorage.setItem("movie-api-from-YM", JSON.stringify(this.favorite));
   }
 
