@@ -3,33 +3,28 @@ import { observer } from "mobx-react";
 
 import MoviePreview from "../../MoviePreview";
 import movieStore from "../../../store/movieStore";
-import "./SearchResults.scss";
+import "./Favorite.scss";
 
-const SearchRes: React.FC = observer(() => {
-  const { moviesSearch, getMoreSearch, searchToggleFavorite } = movieStore;
+const Favorite: React.FC = observer(() => {
+  const { favorite, toggleAllFavorite } = movieStore;
 const toggleFavorite = (
     e: React.MouseEvent<HTMLSpanElement, MouseEvent>,
     id: number,
     favorite: boolean
   ) => {
     e.stopPropagation();
-     searchToggleFavorite(id,favorite);
+     toggleAllFavorite(id,favorite);
   };
 
   return (
     <div>
       <div className="card-nest">
-        {moviesSearch &&
-          moviesSearch.map((movie) => (
+        {favorite &&
+          favorite.map((movie) => (
             <MoviePreview key={movie.id} toggleFavorite={toggleFavorite} {...movie} />
           ))}
       </div>
-      {moviesSearch.length > 1 && (
-        <button className="more-btn" onClick={() => getMoreSearch()}>
-          More
-        </button>
-      )}
     </div>
   );
 });
-export default SearchRes;
+export default Favorite;

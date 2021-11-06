@@ -16,6 +16,8 @@ class DocumentVersionStore {
 
   pageSearch: number = 1;
 
+  favorite: IMoviePreview[] | [] = [];
+
   singleMovie: IMovieCard | null = null;
 
   error: string | null = null;
@@ -28,11 +30,13 @@ class DocumentVersionStore {
 
   setPopular(movies: IMoviePreview[] | undefined) {
     if (!movies) return;
-    console.log(movies);
+    const res = movies.map((el) => ({
+      ...el,
+      isFavorite: this.isInFavorite(el.id),
+    }));
     this.isLoading = false;
-    this.moviesPopular = [...this.moviesPopular, ...movies];
+    this.moviesPopular = [...this.moviesPopular, ...res];
   }
-
   setSingleMovie(movie: IMovieCard | undefined) {
     if (!movie) return;
     this.isLoading = false;
@@ -40,9 +44,65 @@ class DocumentVersionStore {
   }
   setSearch(movies: IMoviePreview[] | undefined) {
     if (!movies) return;
-    console.log(movies);
+    const res = movies.map((el) => ({
+      ...el,
+      isFavorite: this.isInFavorite(el.id),
+    }));
     this.isLoading = false;
-    this.moviesSearch = [...this.moviesSearch, ...movies];
+    this.moviesSearch = [...this.moviesSearch, ...res];
+  }
+
+  toggleFavorite(movie: IMoviePreview, favorite: boolean) {
+    movie.isFavorite = favorite;
+    this.setFavorite(movie, favorite);
+    return movie;
+  }
+  setFavorite(movie: IMoviePreview, status: boolean) {
+    const { favorite } = this;
+    if (status) {
+      const res: IMoviePreview[] = [...favorite, movie];
+      this.favorite = res;
+    } else if (!status) {
+      const res = favorite.filter((el) => el.id !== movie.id);
+      this.favorite = res;
+    }
+    console.log(JSON.stringify(this.favorite))
+    localStorage.setItem("movie-api-from-YM", JSON.stringify(this.favorite));
+  }
+
+  getFavorite() {
+    const res = localStorage.getItem("movie-api-from-YM");
+    if (res) this.favorite = JSON.parse(res);
+  }
+
+  toggleAllFavorite(id: number, status: boolean) {
+    const { moviesSearch, moviesPopular } = this;
+    if (moviesSearch.some((el) => el.id === id))
+      this.searchToggleFavorite(id, status);
+    if (moviesPopular.some((el) => el.id === id))
+      this.popularToggleFavorite(id, status);
+  }
+
+  findIndex(arr: IMoviePreview[], id: number) {
+    const index = arr.findIndex((el) => el.id === id);
+    return index;
+  }
+
+  isInFavorite(id: number) {
+    return this.favorite.some((el) => el.id === id);
+  }
+
+  popularToggleFavorite(id: number, favorite: boolean) {
+    const { moviesPopular } = this;
+    const index = this.findIndex(moviesPopular, id);
+    const res = this.toggleFavorite(moviesPopular[index], favorite);
+    this.moviesPopular[index] = res;
+  }
+  searchToggleFavorite(id: number, favorite: boolean) {
+    const { moviesSearch } = this;
+    const index = this.findIndex(moviesSearch, id);
+    const res = this.toggleFavorite(moviesSearch[index], favorite);
+    this.moviesSearch[index] = res;
   }
 
   resetSearchPages() {

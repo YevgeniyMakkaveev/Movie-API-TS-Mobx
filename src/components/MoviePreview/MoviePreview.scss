@@ -10,6 +10,28 @@
  border-radius: 3px;
  cursor: pointer;
 
+ .star,
+ .star-marked{
+   position: absolute;
+   font-size: 2em;
+   color: orangered;
+   right: 5%;
+   z-index: 9999;
+ }
+
+ .star{
+ &:hover:before{
+     content: "\2605";
+     position: absolute;
+ }
+ }
+ .star-marked {
+  &:before {
+   content: "\2605";
+   position: absolute;
+  }
+ }
+
  img {
   width: 100%;
  }

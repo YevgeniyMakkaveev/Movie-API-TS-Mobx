@@ -7,14 +7,20 @@ import MovieCard from "../../MovieCard";
 
 const SingleMovie: React.FC = observer(() => {
   const { id } = useParams<{ id: string }>();
-  const { singleMovie, fetchSingleMovie } = movieStore;
+  const { singleMovie, fetchSingleMovie,isInFavorite,toggleAllFavorite } = movieStore;
   useEffect(() => {
     fetchSingleMovie(id);
   }, [fetchSingleMovie, id]);
 
+  const toggleFavorite=()=>{
+    toggleAllFavorite(+id, isInFavorite(+id))
+  }
+
+
+
   return (
     <div>
-      {singleMovie && <MovieCard key={singleMovie.id} {...singleMovie} />}
+      {singleMovie && <MovieCard key={singleMovie.id} isFavorite={isInFavorite(+id)} toggleFavorite={toggleFavorite} {...singleMovie} />}
     </div>
   );
 });

@@ -5,7 +5,13 @@ import getColor from "../../unit/getColor";
 import { _imgPatch } from "../../_const";
 import "./MovieCard.scss";
 
-const MovieCard: React.FC<IMovieCard> = ({
+interface IRenderMovieCard extends IMovieCard{
+toggleFavorite: (id: number, favorite:boolean) => void;
+isFavorite: boolean
+}
+
+const MovieCard: React.FC<IRenderMovieCard> = ({
+  id,
   overview,
   poster_path,
   release_date,
@@ -13,6 +19,8 @@ const MovieCard: React.FC<IMovieCard> = ({
   vote_average,
   tagline,
   genres,
+  isFavorite,
+  toggleFavorite
 }) => {
   console.log("загрузка");
 

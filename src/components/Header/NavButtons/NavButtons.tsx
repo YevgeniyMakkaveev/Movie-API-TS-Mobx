@@ -10,11 +10,15 @@ const NavButtons: React.FC = () => {
   const goToSearch = () => {
     push("/search");
   };
+  const goToFavorite = () => {
+    push("/favorite");
+  };
 
   return (
     <div className="btns">
-      <button onClick={goToPopular}>Популярное </button>
-      <button onClick={goToSearch}>Поиск </button>
+      <button onClick={goToPopular}>Popular </button>
+      <button onClick={goToSearch}>Search </button>
+      <button onClick={goToFavorite}>Favorite </button>
     </div>
   );
 };
