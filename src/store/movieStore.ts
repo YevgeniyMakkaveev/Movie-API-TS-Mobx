@@ -37,11 +37,20 @@ class DocumentVersionStore {
     this.isLoading = false;
     this.moviesPopular = [...this.moviesPopular, ...res];
   }
+
   setSingleMovie(movie: IMovieCard | undefined) {
     if (!movie) return;
     this.isLoading = false;
+    movie.isFavorite=this.isInFavorite(movie.id)
     this.singleMovie = movie;
   }
+
+singleMovieFavoriteToggle(status: boolean){
+  if(!this.singleMovie) return
+this.singleMovie.isFavorite=status
+this.toggleAllFavorite(this.singleMovie.id,status)
+}
+
   setSearch(movies: IMoviePreview[] | undefined) {
     if (!movies) return;
     const res = movies.map((el) => ({
@@ -57,6 +66,7 @@ class DocumentVersionStore {
     this.setFavorite(movie, favorite);
     return movie;
   }
+
   setFavorite(movie: IMoviePreview, status: boolean) {
     const { favorite } = this;
     if (status) {

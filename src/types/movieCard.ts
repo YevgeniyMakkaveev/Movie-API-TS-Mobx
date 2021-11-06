@@ -6,6 +6,7 @@ interface IMovieCard {
   genres: Genre[];
   vote_average: string;
   poster_path: string;
+  isFavorite: boolean
   overview: string;
 }
 interface Genre {

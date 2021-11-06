@@ -6,7 +6,7 @@ import { _imgPatch } from "../../_const";
 import "./MovieCard.scss";
 
 interface IRenderMovieCard extends IMovieCard{
-toggleFavorite: (id: number, favorite:boolean) => void;
+toggleFavorite: (favorite:boolean) => void;
 isFavorite: boolean
 }
 
@@ -42,6 +42,7 @@ const MovieCard: React.FC<IRenderMovieCard> = ({
           </div>
         </div>
         <div className="body">{overview}</div>
+      <button className='btn-fav' onClick={()=>toggleFavorite(!isFavorite)}>{isFavorite? 'Удалить':'Добавить'} </button>
       </div>
     </div>
   );

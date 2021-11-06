@@ -6,11 +6,14 @@ import MoviePreview from "../../MoviePreview";
 import "./Popular.scss";
 
 const Popular: React.FC = observer(() => {
-  const { fetchPopular, moviesPopular, getMorePopular, popularToggleFavorite } =
+  const { fetchPopular, moviesPopular,isLoading, getMorePopular, popularToggleFavorite } =
     movieStore;
+
   useEffect(() => {
-    fetchPopular();
-  }, [fetchPopular]);
+    if(moviesPopular.length===0&&!isLoading) fetchPopular();
+  }, [moviesPopular,isLoading,fetchPopular]);
+
+
 
   const toggleFavorite = (
     e: React.MouseEvent<HTMLSpanElement, MouseEvent>,
