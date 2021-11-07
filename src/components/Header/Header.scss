@@ -1,5 +1,11 @@
 @import "../../style/color.scss";
 
+.head-app {
+  background-image: url('../../style/img/bg1.jpg');
+  width: 100%;
+  padding-bottom: 2rem;
+}
+
 .title {
   font-size: 4em;
   font-weight: 700;

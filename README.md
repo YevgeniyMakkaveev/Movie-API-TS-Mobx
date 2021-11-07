@@ -3,6 +3,7 @@
 Live demo here [link](https://boring-archimedes-34337d.netlify.app/)
 
 ![popular](src/style/readme/popular.png)
+![more](src/style/readme/more.png)
 ![single-movie](src/style/readme/movie-screen.png)
 ![favorite](src/style/readme/favorite.png)
 

@@ -69,14 +69,23 @@ class DocumentVersionStore {
 
   setFavorite(movie: IMoviePreview, status: boolean) {
     const { favorite } = this;
-    if (status&&!this.isInFavorite(movie.id)) {
+    if (status && !this.isInFavorite(movie.id)) {
       const res: IMoviePreview[] = [...favorite, movie];
       this.favorite = res;
     } else if (!status) {
-      const res = favorite.filter((el) => el.id !== movie.id);
-      this.favorite = res;
+     this.removeFavorite(movie.id)
     }
-    localStorage.setItem("movie-api-from-YM", JSON.stringify(this.favorite));
+    this.saveFavorite()
+  }
+
+  removeFavorite(id: number) {
+    const { favorite } = this;
+    const res = favorite.filter((el) => el.id !== id);
+    this.favorite = res;
+  }
+
+  saveFavorite(){
+  localStorage.setItem("movie-api-from-YM", JSON.stringify(this.favorite));
   }
 
   getFavorite() {
@@ -90,6 +99,13 @@ class DocumentVersionStore {
       this.searchToggleFavorite(id, status);
     if (moviesPopular.some((el) => el.id === id))
       this.popularToggleFavorite(id, status);
+    if (
+      !moviesPopular.some((el) => el.id === id) &&
+      !moviesSearch.some((el) => el.id === id)
+    ) {
+      this.removeFavorite(id)
+      this.saveFavorite()
+    }
   }
 
   findIndex(arr: IMoviePreview[], id: number) {
@@ -114,7 +130,8 @@ class DocumentVersionStore {
     this.moviesSearch[index] = res;
   }
 
-  resetSearchPages() {
+  resetSearch() {
+    this.moviesSearch=[]
     this.pageSearch = 1;
   }
 

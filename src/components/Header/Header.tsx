@@ -9,21 +9,21 @@ import "./Header.scss";
 
 
 const Header: React.FC = observer(() => {
-  const { fetchSearch, resetSearchPages } = movieStore;
+  const { fetchSearch, resetSearch } = movieStore;
   const [search, setSearch] = useState("");
   const history = useHistory();
 
   const onSearch = (e: React.FormEvent<HTMLFormElement>) => {
     if (!search) return;
     e.preventDefault();
-    resetSearchPages();
+    resetSearch();
     fetchSearch(search);
     history.push(`/search`);
     setSearch("");
   };
 
   return (
-    <div>
+    <div className='head-app'>
       <header>
         <h1 className="title">MOVIE-API</h1>
         <div><a

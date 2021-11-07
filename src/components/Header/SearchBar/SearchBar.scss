@@ -4,7 +4,8 @@
  border: 2px solid $primary-color;
  border-radius: 50px;
  font-size: 2rem;
- border: 0.1em solid $secondary-color;
+ border: none;
+ border: 0.01em solid transparent;
  padding: 0.5rem 1rem;
  width: 80vw;
  color: white;
@@ -13,5 +14,6 @@
  &:focus {
   outline: none;
   background-color: $primary-color;
+   border: 0.01em solid $secondary-color;
  }
 }
