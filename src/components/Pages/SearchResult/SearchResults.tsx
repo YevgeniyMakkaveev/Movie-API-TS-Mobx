@@ -6,14 +6,14 @@ import movieStore from "../../../store/movieStore";
 import "./SearchResults.scss";
 
 const SearchRes: React.FC = observer(() => {
-  const { moviesSearch, getMoreSearch, searchToggleFavorite } = movieStore;
+  const { moviesSearch, getMoreSearch, toggleAllFavorite } = movieStore;
 const toggleFavorite = (
     e: React.MouseEvent<HTMLSpanElement, MouseEvent>,
     id: number,
     favorite: boolean
   ) => {
     e.stopPropagation();
-     searchToggleFavorite(id,favorite);
+     toggleAllFavorite(id,favorite);
   };
 
   return (

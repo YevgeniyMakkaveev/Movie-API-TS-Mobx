@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Movie card component should work it should be used to test snapshots should mach the snapshot 1`] = `
+<MovieCard
+  genres={
+    Array [
+      Object {
+        "id": 1,
+        "name": "1",
+      },
+      Object {
+        "id": 2,
+        "name": "2",
+      },
+    ]
+  }
+  id={1}
+  isFavorite={true}
+  overview="I did it for test"
+  poster_path="/none"
+  release_date="1984"
+  tagline="testing"
+  title="Name"
+  toggleFavorite={[Function]}
+  vote_average="8"
+/>
+`;

@@ -6,7 +6,7 @@ import MoviePreview from "../../MoviePreview";
 import "./Popular.scss";
 
 const Popular: React.FC = observer(() => {
-  const { fetchPopular, moviesPopular,isLoading, getMorePopular, popularToggleFavorite } =
+  const { fetchPopular, moviesPopular,isLoading, getMorePopular, toggleAllFavorite } =
     movieStore;
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const Popular: React.FC = observer(() => {
     favorite: boolean
   ) => {
     e.stopPropagation();
-    popularToggleFavorite(id, favorite);
+    toggleAllFavorite(id, favorite);
   };
   return (
     <div>

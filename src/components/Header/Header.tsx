@@ -1,10 +1,12 @@
-import { observer } from "mobx-react";
 import React, { useState } from "react";
+import { observer } from "mobx-react";
 import { useHistory } from "react-router-dom";
 
 import movieStore from "../../store/movieStore";
 import NavButtons from "./NavButtons";
+import SearchBar from "./SearchBar";
 import "./Header.scss";
+
 
 const Header: React.FC = observer(() => {
   const { fetchSearch, resetSearchPages } = movieStore;
@@ -23,18 +25,17 @@ const Header: React.FC = observer(() => {
   return (
     <div>
       <header>
-        {" "}
-        <h1 className="title">MOVIE-API</h1>{" "}
+        <h1 className="title">MOVIE-API</h1>
+        <div><a
+        rel="noreferrer"
+        className="head_link"
+        target="_blank"
+        href="https://github.com/YevgeniyMakkaveev"
+      >
+        made by Yevgeny Makkaveev
+      </a></div>
       </header>
-      <form onSubmit={(e) => onSearch(e)}>
-        <input
-          placeholder="Start search and press enter"
-          className="search"
-          type="search"
-          onChange={(e) => setSearch(e.target.value)}
-          value={search}
-        />
-      </form>
+     <SearchBar search={search} onInput={setSearch} onSearch={onSearch} />
       <NavButtons />
     </div>
   );

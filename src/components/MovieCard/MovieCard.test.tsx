@@ -13,6 +13,8 @@ const app = (
     vote_average={"8"}
     release_date="1984"
     tagline="testing"
+    toggleFavorite={() => {}}
+    isFavorite={true}
     genres={[
       { id: 1, name: "1" },
       { id: 2, name: "2" },
@@ -31,9 +33,11 @@ describe("Movie card component should work", () => {
         vote_average={"8"}
         release_date="1984"
         tagline="testing"
+        toggleFavorite={() => {}}
+        isFavorite={true}
         genres={[
-          { id: 1, name: "1" },
-          { id: 2, name: "2" },
+          { id: 3, name: "1" },
+          { id: 4, name: "2" },
         ]}
       />
     );

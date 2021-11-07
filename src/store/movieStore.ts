@@ -69,7 +69,7 @@ class DocumentVersionStore {
 
   setFavorite(movie: IMoviePreview, status: boolean) {
     const { favorite } = this;
-    if (status) {
+    if (status&&!this.isInFavorite(movie.id)) {
       const res: IMoviePreview[] = [...favorite, movie];
       this.favorite = res;
     } else if (!status) {
