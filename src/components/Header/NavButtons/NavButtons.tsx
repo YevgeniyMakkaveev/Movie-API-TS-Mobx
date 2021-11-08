@@ -1,25 +1,69 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./NavButtons.scss";
 
-const NavButtons: React.FC = () => {
-  const { push } = useHistory();
-  const goToPopular = () => {
-    push("/");
-  };
-  const goToSearch = () => {
-    push("/search");
-  };
-  const goToFavorite = () => {
-    push("/favorite");
-  };
-
-  return (
+const NavButtons: React.FC = () => (
+  <div className="btn_wrap">
     <div className="btns">
-      <button onClick={goToPopular}>Popular </button>
-      <button onClick={goToSearch}>Search </button>
-      <button onClick={goToFavorite}>Favorite </button>
+      <div className="text_btn">
+        <NavLink
+          style={{
+            display: "block",
+            color: "#264653",
+            textDecoration: "none",
+            height: "auto",
+            width: "auto",
+            paddingTop: "0.4em",
+          }}
+          activeStyle={{
+            fontWeight: "bold",
+            color: "#F4F5FF",
+          }}
+          to="/popular"
+        >
+          Popular
+        </NavLink>
+      </div>
+      <div className="text_btn">
+        <NavLink
+          style={{
+            display: "block",
+            color: "#264653",
+            textDecoration: "none",
+            height: "auto",
+            width: "auto",
+            paddingTop: "0.4em",
+          }}
+          activeStyle={{
+            fontWeight: "bold",
+            color: "#F4F5FF",
+          }}
+          to="/search"
+        >
+          Search
+        </NavLink>
+      </div>
+      <div className="text_btn">
+        <NavLink
+          style={{
+            display: "block",
+            color: "#264653",
+            textDecoration: "none",
+            height: "auto",
+            width: "auto",
+            paddingTop: "0.4em",
+          }}
+          activeStyle={{
+            fontWeight: "bold",
+            color: "#F4F5FF",
+          }}
+          to="/favorite"
+        >
+          Favorite
+        </NavLink>
+      </div>
     </div>
-  );
-};
+  </div>
+);
+
 export default NavButtons;

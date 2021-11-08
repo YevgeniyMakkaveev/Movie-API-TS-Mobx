@@ -1,25 +1,34 @@
 @import '../../../style/color.scss';
 
-.btns {
- button {
-  width: 33%;
-  height: 50px;
-  border-radius: 0.5em;
-  font-size: 1.4em;
-  font-weight: 700;
-  background-color: $button-inactive;
-  color: $white-text;
- }
+.btn_wrap {
+ width: 100%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
 
- .active {
-  background-color: $secondary-color;
-  color: $primary-color;
+ .btns {
+  display: flex;
+  flex-direction: row;
+  .text_btn {
+   border: 0.1em solid $white-text;
+   margin: 0 1em 0.3em ;
+   width: 33%;
+   height: 50px;
+   border-radius: 0.5em;
+   font-size: 1.4em;
+   font-weight: 700;
+   background-color: $button-inactive;
+   color: $white-text;
+  }
+  .active {
+   color: $white-text;
+  }
  }
 }
 
 @media screen and (min-width: 767px) {
  .btns {
-  button {
+  div {
    width: 200px !important;
   }
  }
@@ -27,7 +36,7 @@
 
 @media screen and (min-width: 1000px) {
  .btns {
-  button {
+  div {
    width: 250px !important;
   }
  }

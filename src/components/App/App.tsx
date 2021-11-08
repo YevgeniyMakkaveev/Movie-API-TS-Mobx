@@ -7,6 +7,7 @@ import Popular from "../Pages/Popular";
 import Header from "../Header";
 import SingleMovie from "../Pages/SingleMovie";
 import SearchRes from "../Pages/SearchResult";
+import Home from "../Pages/Home";
 import Favorite from "../Pages/Favorite";
 import NotFound from "../Pages/404/NotFound";
 import Loader from "../Loader";
@@ -20,7 +21,8 @@ const App: React.FC = observer(() => {
       <Header />
       {isLoading&& <div className='spinner'> <Loader/> </div>}
       <Switch>
-        <Route exact path="/" component={Popular} />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/popular" component={Popular} />
         <Route exact path="/search" component={SearchRes} />
         <Route exact path="/favorite" component={Favorite} />
         <Route exact path="/movie/:id" component={SingleMovie} />
